@@ -1,0 +1,32 @@
+This was really fun to work on, so I spent more than 2 hours on it.
+I did force myself to stop because it's lunch time.
+
+Things left to do:
+
+1. Integration testing
+Test CSV/TSV files can be created and passed into `process_files`.
+
+2. Error handling
+There is currently no error handling. Unexpected data could cause
+`process.py` to error out. This is a good topic to discuss when we
+meet--how do we want this to work? Do we want to silently handle
+data problems? That's great for keeping the pipe running but bad
+for data quality.
+
+3. Logging
+Related to error handling, we should log what's going on so that
+we have something to look at if the pipe breaks.
+In addition, we should log metrics for things like:
+How many records were seen?
+How many records were errors?
+How long did the job take to run?
+We'd want to monitor these metrics to see if the job behavior
+starts to change.
+
+4. Related to logging, we need alerting. If the errors file isn't
+empty, we need to look at what went wrong.
+TODO: Right now, the error and good files are getting overwritten
+each time the job runs. Instead, we should archive these so that we
+don't lose good diagnostic information.
+
+
